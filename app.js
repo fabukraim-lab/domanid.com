@@ -266,19 +266,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Toggle
     const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
+    const navigation = document.getElementById('main-navigation')
+        || document.querySelector('.nav-links');
 
-    if (mobileMenu && navLinks) {
+    if (mobileMenu && navigation) {
+        const setMenuState = (open) => {
+            mobileMenu.classList.toggle('is-active', open);
+            navigation.classList.toggle('active', open);
+            mobileMenu.setAttribute('aria-expanded', String(open));
+            mobileMenu.setAttribute(
+                'aria-label',
+                open ? 'Close navigation menu' : 'Open navigation menu'
+            );
+        };
+
         mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('is-active');
-            navLinks.classList.toggle('active');
+            setMenuState(!navigation.classList.contains('active'));
         });
 
         // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
+        navigation.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.remove('is-active');
-                navLinks.classList.remove('active');
+                setMenuState(false);
             });
         });
     }
