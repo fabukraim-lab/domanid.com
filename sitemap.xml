@@ -36,6 +36,10 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://domanid.com/articles/guide-to-buying-an-investment-domain.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://domanid.com/articles/understanding-icann-fee-domain-names.html</loc>
     <priority>0.6</priority>
   </url>
